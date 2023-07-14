@@ -102,21 +102,6 @@ app.get("/mobiles",function(req,res){
     })
 });
 
-function getData(){
-  
-      let query=` SELECT * FROM mob `;
-      console.log(query);
-      client.query(query,function(err,result){
-          if(err) console.log(err);
-          else {
-            console.log(result.rows);
-            return result.rows;
-          }
-         
-      })
-  
-}
-
 app.get("/mobiles/brand/:brand",function(req,res){
   let brand=req.params.brand;
   let values=[brand]
@@ -213,6 +198,3 @@ app.delete("/mobiles/:name/delete",function(req,res){
   })
  })
  
- 
- let data=getData()
- console.log(data);
