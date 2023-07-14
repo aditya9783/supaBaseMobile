@@ -115,7 +115,7 @@ app.get("/mobiles/brand/:brand",function(req,res){
 app.get("/mobiles/:name",function(req,res){
   let name=req.params.name;
   let values=[name];
-  let sql="SELECT * FROM mob where name=$1";
+  let sql=` SELECT * FROM mob where name=$1`;
   client.query(sql,values,function(err,result){
       if(err) console.log(err);
       else res.send(result.rows)
