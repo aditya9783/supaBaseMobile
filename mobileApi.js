@@ -158,7 +158,7 @@ app.post("/newMobile",function(req,res,next){
     // let body=req.body
     let values=Object.values(req.body);
     console.log(values);
-    let query=`INSERT INTO mob (name,price,brand,ram,rom,os,id) 
+    let query=` INSERT INTO mob (id,name,price,brand,ram,rom,os) 
     VALUES ($1,$2,$3,$4,$5,$6,$7)`;
     // let params=[body.name,body.price,body.brand,body.RAM,body.ROM,body.OS];
     client.query(query,values,function(err,result){
