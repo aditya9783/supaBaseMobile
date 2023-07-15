@@ -175,9 +175,10 @@ app.post("/newMobile",function(req,res,next){
 app.put("/mobiles/:name/edit",function(req,res){
   let name=req.params.name;
   let body=req.body;
-  let values=Object.values(req.body);
-  let sql="UPDATE mob SET name=?,price=?,brand=?,RAM=?,ROM=?,OS=? WHERE name=?";
-  let params=[body.name,body.price,body.brand,body.RAM,body.ROM,body.OS,name];
+  
+  let params=[body.name,body.price,body.brand,body.ram,body.rom,body.os,name];
+  let sql="UPDATE mob SET name=$1,price=$2,brand=$3,ram=$4,rom=$5,os=$6 WHERE name=$7";
+  
  client.query(sql,params,function(err,result){
     if(err){
       console.log(err);
@@ -185,7 +186,7 @@ app.put("/mobiles/:name/edit",function(req,res){
     }
     else{
       console.log(result);
-      res.send(result)
+      res.send(result.rowCount)
     }
   })
 
