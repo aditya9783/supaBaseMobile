@@ -43,15 +43,15 @@ app.listen(port, () => console.log(`Node app listening on port ${port}!`));
 //     else console.log(result);
 // });
 
-app.get("/mobiles/:name",function(req,res){
-  let name=req.params.name;
-  let values=Object.values(req.body);
-  let sql="SELECT * FROM mobiles2 where name=?";
-  client.query(sql,name,function(err,result){
-      if(err) console.log(err);
-      else res.send(result)
-  })
-});
+// app.get("/mobiles/:name",function(req,res){
+//   let name=req.params.name;
+//   let values=Object.values(req.body);
+//   let sql="SELECT * FROM mobiles2 where name=?";
+//   client.query(sql,name,function(err,result){
+//       if(err) console.log(err);
+//       else res.send(result)
+//   })
+// });
 app.get("/mobiles",function(req,res){
   let brand=req.query.brand
   let RAM=req.query.RAM;
