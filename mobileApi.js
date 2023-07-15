@@ -177,7 +177,7 @@ app.put("/mobiles/:name/edit",function(req,res){
   let body=req.body;
   
   let params=[body.name,body.price,body.brand,body.ram,body.rom,body.os,name];
-  let sql="UPDATE mob SET name=$1,price=$2,brand=$3,ram=$4,rom=$5,os=$6 WHERE name=$7";
+  let sql=` UPDATE mob SET name=$1,price=$2,brand=$3,ram=$4,rom=$5,os=$6 WHERE name=$7`;
   
  client.query(sql,params,function(err,result){
     if(err){
@@ -186,7 +186,7 @@ app.put("/mobiles/:name/edit",function(req,res){
     }
     else{
       console.log(result);
-      res.send(result.rowCount)
+      res.send(`${result.rowCount}`)
     }
   })
 
@@ -194,9 +194,9 @@ app.put("/mobiles/:name/edit",function(req,res){
 
 app.delete("/mobiles/:name/delete",function(req,res){
   let name=req.params.name
-  let values=Object.values(req.body);
-  let sql= "Delete From mob where name=?";
-  client.query(sql,name,function(err,result){
+  let values=[name];
+  let sql= ` Delete From mob where name=$1`;
+  client.query(sql,values,function(err,result){
     if(err) {
       console.log(err);
       res.status(404).send("No Mobile Found");
