@@ -96,6 +96,24 @@ app.get("/mobiles",function(req,res){
             let ROMArr=ROM.split(",");
            arr=arr.filter((br)=>ROMArr.find(b=>b===br.rom)); 
           }
+          if(sortBy==="name"){
+            arr=arr.sort((c1,c2)=>c1.name.localeCompare(c2.name))
+          }
+          if(sortBy==="price"){
+            arr=arr.sort((c1,c2)=>c1.price-c2.price)
+          }
+          if(sortBy==="brand"){
+            arr=arr.sort((c1,c2)=>c1.brand.localeCompare(c2.brand))
+          }
+          if(sortBy==="ram"){
+            arr=arr.sort((c1,c2)=>c1.ram.localeCompare(c2.ram))
+          }
+          if(sortBy==="rom"){
+            arr=arr.sort((c1,c2)=>c2.rom.localeCompare(c1.rom))
+          }
+          if(sortBy==="os"){
+            arr=arr.sort((c1,c2)=>c1.os.localeCompare(c2.os))
+          }
           res.send(arr)
         }
        
