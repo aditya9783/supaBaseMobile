@@ -56,7 +56,7 @@ app.get("/mobiles",function(req,res){
   let brand=req.query.brand
   let RAM=req.query.RAM;
   let ROM=req.query.ROM
-
+  let sortBy=req.query.sortBy
     let options="";
     let optionArr=[];
     let values=[brand]
